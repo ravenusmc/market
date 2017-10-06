@@ -1,5 +1,7 @@
-# Marke
+# Market
 ## Intro
+
+This is a web based app that will attempt to simulate a program to track people buying goods at a store. I got this idea while volunteering at the urban farm Truly Living Well. I really wanted to see if I could build a program that will track people buying goods. In many ways, what I'm getting out, is basically building a cash register. 
 
 
 # Getting started
