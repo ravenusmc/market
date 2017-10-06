@@ -2,6 +2,48 @@
 
 {% block body %}
 
-<h1></h1>
+<nav class="navbar-fixed navbar navbar-toggleable-md navbar-inverse bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Farm Market Register</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Log in</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main class='login_main'>
+
+  <div class='login_main_div'>
+    <h3 class='login_heading'>Sign Up Page</h3>
+    <form class='center' method="POST">
+      <input placeholder='Username' name='username' type='text'/><br>
+      <input placeholder='Name' name='name' type='text'/><br>
+      <input placeholder='Password' name='password' type='password'/>
+      <div class='btn_div'>
+        <button class='login_button'><a class='login_anchor' href="/">Log in</a></button>
+      </div>
+    </form>
+    <br>
+  </div>
+
+</main>
+
+
+
+<!-- 
+   <form method="POST">
+        <h1 class='center'>Sign Up</h1>
+        <label>Username: </label><input name='username' type='text'/>
+        <label>Name: </label><input name='name' type='text'/>
+        <label>Password: </label><input name='password' type='password'/>
+        <div class='submit_fix'>
+          <button><a href="#">Sign Up</a></button>&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+</form> -->
 
 {% endblock %}

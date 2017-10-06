@@ -5,14 +5,12 @@ from flask import Flask, session, jsonify, redirect, url_for, escape, render_tem
 app = Flask(__name__)
 
 #This route takes the user to the landing page
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def landing():
   if request.method == 'POST':
-    print('POST')
     #Recieving the information from the user.
     username = request.form['username']
     password = request.form['password']
-    print(username)
   return render_template('login.html')
 
 #This route takes the user to the signup page
