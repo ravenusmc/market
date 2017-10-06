@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<nav class="navbar-fixed navbar navbar-toggleable-md navbar-inverse bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">Farm Market Register</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/sign_up">Sign Up</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main class='login_main'>
+
+  <div class='login_main_div'>
+    <h3 class='login_heading'>Farm Register</h3>
+    <form class='center' method="POST">
+      <input placeholder='Username' name='username' type='text'/><br>
+      <input placeholder='Password' name='password' type='password'/>
+      <div class='btn_div'>
+        <button class='login_button'><a href="/">Log in</a></button>
+      </div>
+    </form>
+    <br>
+  </div>
+
+</main>
+
+
+{% endblock %}
