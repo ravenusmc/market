@@ -1,7 +1,7 @@
 /* Generic CSS (CSS used throughout the app) */
 
-body, html {
-  height: 100%;
+* {
+  box-sizing: border-box;
 }
 
 .center {
@@ -50,8 +50,58 @@ body, html {
   color: black;
 }
 
-/* CSS For Sign Up Page */
+/* CSS For Home Page */
+.main_container {
+  border: 3px solid pink;
+  height: 100vh;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 10px;
+  grid-template-areas:
+  "header header"
+  "main aside"
+  "footer footer";
 
+}
+
+header {
+  grid-area: header;
+  display: grid;
+  flex-direction: column;
+  justify-content: center;
+}
+
+main {
+  border: 2px solid red;
+  grid-area: main;
+}
+
+aside {
+  border: 2px solid blue;
+  grid-area: aside;
+}
+
+footer {
+  border: 3px solid green;
+  grid-area: footer;
+  height: 100px;
+}
+
+@media (max-width: 768px){
+
+  .main_container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "aside"
+      "footer";
+  }
+
+}
 
 
 

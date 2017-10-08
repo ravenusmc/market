@@ -20,6 +20,13 @@
 
   <div class='login_main_div'>
     <h3 class='login_heading'>Farm Register</h3>
+      <!-- Error messaging -->
+      {% for message in get_flashed_messages() %}
+        <div class="alert alert-danger" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+      <!-- End Error messaging -->
     <form class='center' method="POST">
       <input placeholder='Username' name='username' type='text'/><br>
       <input placeholder='Password' name='password' type='password'/>
