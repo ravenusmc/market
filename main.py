@@ -55,7 +55,8 @@ def signup():
 def home():
     if 'username' not in session:
         return redirect(url_for('signup'))
-    return render_template('home.html')
+    username = session['username']
+    return render_template('home.html', name = username)
 
 #This function is what will log out the user.
 @app.route('/sign_out')

@@ -10,6 +10,9 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
+        <a class="nav-link" href="/signup">Stats</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="/">Log Out</a>
       </li>
     </ul>
@@ -24,6 +27,17 @@
 
   <main>
     <h1>Check Out Customer</h1> 
+    <h3>Welcome {{ name }}</h3>
+    <form>
+      <table>
+          <tr><td class='center bold'>Food</td><td class='center bold'>Amount</td></tr>
+          <tr><td><input type='radio' name='food' value='Kale'>Kale</td><td><input class='input_adjustment'></td></tr>
+          <tr><td><input type='radio' name='food' value='Collards'>Collards</td><td><input class='input_adjustment'></td></tr>
+          <tr><td><input type='radio' name='food' value='Broccolo'>Broccoli</td><td><input class='input_adjustment'></td></tr>
+          <tr><td><input type='radio' name='food' value='Spinach'>Spinach</td><td><input class='input_adjustment'></td></tr>
+      </table><br>
+      <button>Submit</button>
+    </form>
   </main>
 
   <aside>
