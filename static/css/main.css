@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body, html {
+  height: 100%;
+}
+
 .center {
   text-align: center;
 }
@@ -52,11 +56,10 @@
 
 /* CSS For Home Page */
 .main_container {
-  border: 3px solid pink;
   height: 100vh;
   margin-left: 5%;
   margin-right: 5%;
-  margin-top: 50px;
+  margin-top: 20px;
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-gap: 10px;
@@ -69,25 +72,47 @@
 
 header {
   grid-area: header;
-  display: grid;
+  display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  height: 400px;
+  background-image: url('/static/image/market.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.home_title {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
 }
 
 main {
   border: 2px solid red;
   grid-area: main;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 aside {
-  border: 2px solid blue;
   grid-area: aside;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid blue;
+  padding: 10px;
 }
 
 footer {
   border: 3px solid green;
   grid-area: footer;
-  height: 100px;
+  text-align: center;
+  margin-top: 25px;
 }
 
 @media (max-width: 768px){
