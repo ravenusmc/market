@@ -1,0 +1,1 @@
+#This file will deal with the quote api to bring up random quotes each time the program is used. 

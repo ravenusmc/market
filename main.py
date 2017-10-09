@@ -1,5 +1,6 @@
 #importing outside libraries for use in the project
 from flask import Flask, session, jsonify, redirect, url_for, escape, render_template, request, flash
+import requests
 
 #importing files I made for this project
 from user import *
@@ -56,6 +57,10 @@ def home():
     if 'username' not in session:
         return redirect(url_for('signup'))
     username = session['username']
+    url = "http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=2"
+    r = requests.get(url)
+    response_dict = r.json()
+    print(response_dict)
     return render_template('home.html', name = username)
 
 #This function is what will log out the user.
