@@ -3,6 +3,7 @@ from flask import Flask, session, jsonify, redirect, url_for, escape, render_tem
 import requests
 
 #importing files I made for this project
+from quote import *
 from user import *
 
 #Setting up Flask
@@ -57,11 +58,15 @@ def home():
     if 'username' not in session:
         return redirect(url_for('signup'))
     username = session['username']
-    url = "http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=2"
-    r = requests.get(url)
-    response_dict = r.json()
-    print(response_dict)
-    return render_template('home.html', name = username)
+    #Creating a list to hold the quotes
+    quotes = []
+    quote = Quote()
+    response = quote.getting_quotes()
+    quotes = quote.get_data(response)
+    # url = "http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=2"
+    #r = requests.get(url)
+    #response_dict = r.json()
+    return render_template('home.html', name = username, quotes = quotes)
 
 #This function is what will log out the user.
 @app.route('/sign_out')
