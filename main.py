@@ -53,19 +53,25 @@ def signup():
     return render_template('signup.html')
 
 #This route takes the user to the home page
-@app.route('/home')
+@app.route('/home', methods=['GET', 'POST'])
 def home():
+    #This session will prevent users who have not signed up from coming in.
     if 'username' not in session:
         return redirect(url_for('signup'))
+    #This method fires when the user hits the submit button. 
+    if request.method == 'POST':
+        kale = request.form['Kale']
+        kale_amount = request.form['kale_amount']
+        food = request.form['Collards']
     username = session['username']
     #Creating a list to hold the quotes
     quotes = []
+    #Setting up the quote object
     quote = Quote()
+    #Getting the response from my quote api
     response = quote.getting_quotes()
+    #parsing out the data that I need-the actual quotes
     quotes = quote.get_data(response)
-    # url = "http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=2"
-    #r = requests.get(url)
-    #response_dict = r.json()
     return render_template('home.html', name = username, quotes = quotes)
 
 #This function is what will log out the user.
