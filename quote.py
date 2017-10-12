@@ -23,6 +23,21 @@ class Quote():
         #This list will hold the quote that I need from the dictionary.
         content = []
         while count < 3:
+            #Here I get the specific quote
+            content = quotes[count]['content']
+            #I then put the quote into a list with each word being an element in the list.
+            content = content.split()
+            #I then get the first element in the list which will have the first html tag. 
+            first = content[0]
+            #I take that word and break it up into a list 
+            first = list(first)
+            tag_count = 0
+            print(first)
+            while tag_count < 3:
+                del first[0]
+                tag_count += 1
+            #I need to bring first back into a string 
+            #I need to push first back into first spot in the content string.
             content.append(quotes[count]['content'])
             count += 1 
         return content
@@ -30,6 +45,13 @@ class Quote():
         # print(quotes[0]['content'])
 
 
-# quote = Quote()
-# response = quote.getting_quotes()
-# quote.get_data(response)
+quote = Quote()
+response = quote.getting_quotes()
+quote.get_data(response)
+
+# In [9]: a = list(range(10))
+# In [10]: a
+# Out[10]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+# In [11]: del a[-1]
+# In [12]: a
+# Out[12]: [0, 1, 2, 3, 4, 5, 6, 7, 8]
