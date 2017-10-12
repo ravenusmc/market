@@ -21,7 +21,7 @@ class Quote():
         #Setting up a counter 
         count = 0 
         #This list will hold the quote that I need from the dictionary.
-        content = []
+        quote_list = []
         while count < 3:
             #Here I get the specific quote
             content = quotes[count]['content']
@@ -32,15 +32,21 @@ class Quote():
             #I take that word and break it up into a list 
             first = list(first)
             tag_count = 0
-            print(first)
             while tag_count < 3:
                 del first[0]
                 tag_count += 1
-            #I need to bring first back into a string 
+            #Using join method to bring the individual letters back into a word. 
+            first = ''.join(first)
             #I need to push first back into first spot in the content string.
-            content.append(quotes[count]['content'])
+            print(content)
+            print(first)
+            input()
+            content = content.insert(0, first)
+            print(content[2])
+            input()
+            quote_list.append(quotes[count]['content'])
             count += 1 
-        return content
+        return quote_list
 
         # print(quotes[0]['content'])
 
