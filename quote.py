@@ -25,6 +25,7 @@ class Quote():
         while count < 3:
             #Here I get the specific quote
             content = quotes[count]['content']
+            print(content)
             #I then put the quote into a list with each word being an element in the list.
             content = content.split()
             #I then get the first element in the list which will have the first html tag. 
@@ -38,14 +39,17 @@ class Quote():
             #Using join method to bring the individual letters back into a word. 
             first = ''.join(first)
             #I need to push first back into first spot in the content string.
-            print(content)
-            print(first)
-            input()
-            content = content.insert(0, first)
-            print(content[2])
-            input()
-            quote_list.append(quotes[count]['content'])
+            content.insert(0, first)
+            #Since first gets pushed in the 0 position, I now need to delete the element that was in the 0 position
+            #and is now in the 1 position
+            del content[1]
+            del content[-1]
+            #I then turn the elements in the list into a string 
+            content = ' '.join(content)
+            quote_list.append(content)
             count += 1 
+            print(quote_list)
+            input()
         return quote_list
 
         # print(quotes[0]['content'])
