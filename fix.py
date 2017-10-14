@@ -2,6 +2,7 @@
 
 class Fix():
 
+    #This method will specifically focus on getting rid of the <p> tag at the start of the quote. 
     def fix_paragraph_tag(self, content):
         #I then put the quote into a list with each word being an element in the list.
         content = content.split()
@@ -19,7 +20,13 @@ class Fix():
         content.insert(0, first)
         return content, first
 
+    #This method will basically delect the elements in the first and last positions. 
     def delete(self, content):
+        #Since first gets pushed in the 0 position, I now need to delete the element that was in the 0 position
+        #and is now in the 1 position
         del content[1]
         del content[-1]
+        #I then turn the elements in the list into a string 
+        content = ' '.join(content)
+        return content
 

@@ -28,47 +28,17 @@ class Quote():
         while count < 3:
             #Here I get the specific quote
             content = quotes[count]['content']
+            #Creating an object that will take care of the HTML <p> tags at the start and end of each quote. 
             fix = Fix()
+            #Calling the first method to get rid of the <p> tag at the start of the quote
             content, first = fix.fix_paragraph_tag(content)
-
-            #I then put the quote into a list with each word being an element in the list.
-            #content = content.split()
-            #I then get the first element in the list which will have the first html tag. 
-            #first = content[0]
-            #I take that word and break it up into a list 
-            #first = list(first)
-
-            # tag_count = 0
-            # while tag_count < 3:
-            #     del first[0]
-            #     tag_count += 1
-            #Using join method to bring the individual letters back into a word. 
-            # first = ''.join(first)
-            #I need to push first back into first spot in the content string.
-            # content.insert(0, first)
-            #Since first gets pushed in the 0 position, I now need to delete the element that was in the 0 position
-            #and is now in the 1 position
-            
-            del content[1]
-            del content[-1]
-            #I then turn the elements in the list into a string 
-            content = ' '.join(content)
+            #This method will take care of the <p> tag at the end of the quote. 
+            content = fix.delete(content)
             quote_list.append(content)
-            print(quote_list)
-            input()
             count += 1 
         return quote_list
 
-        # print(quotes[0]['content'])
 
-
-quote = Quote()
-response = quote.getting_quotes()
-quote.get_data(response)
-
-# In [9]: a = list(range(10))
-# In [10]: a
-# Out[10]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-# In [11]: del a[-1]
-# In [12]: a
-# Out[12]: [0, 1, 2, 3, 4, 5, 6, 7, 8]
+# quote = Quote()
+# response = quote.getting_quotes()
+# quote.get_data(response)
