@@ -60,9 +60,22 @@ def home():
         return redirect(url_for('signup'))
     #This method fires when the user hits the submit button. 
     if request.method == 'POST':
-        kale = request.form['Kale']
-        kale_amount = request.form['kale_amount']
-        food = request.form['Collards']
+        if request.form.get('Kale') and request.form.get('Collards'):
+            kale_amount = request.form['kale_amount']
+            collard_amount = request.form['collard_amount']
+        elif request.form.get('Kale'):
+            kale_amount = request.form['kale_amount']
+            print(kale_amount)
+        print(kale_amount)
+        print(collard_amount)
+        # kale = request.form['Kale']
+        # kale_amount = request.form['kale_amount']
+        # collards = request.form['Collards']
+        # collard_amount = request.form['collard_amount']
+        # broccoli = request.form['Broccoli']
+        # broccoli_amount = request.form['broccoli_amount']
+        # spinach = request.form['Spinach']
+        # spinach_amount = request.form['spinach_amount']
     username = session['username']
     #Creating a list to hold the quotes
     quotes = []
