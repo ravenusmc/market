@@ -3,8 +3,10 @@ from flask import Flask, session, jsonify, redirect, url_for, escape, render_tem
 import requests
 
 #importing files I made for this project
+from food import *
 from quote import *
 from user import *
+
 
 #Setting up Flask
 app = Flask(__name__)
@@ -60,22 +62,8 @@ def home():
         return redirect(url_for('signup'))
     #This method fires when the user hits the submit button. 
     if request.method == 'POST':
-        if request.form.get('Kale') and request.form.get('Collards'):
-            kale_amount = request.form['kale_amount']
-            collard_amount = request.form['collard_amount']
-        elif request.form.get('Kale'):
-            kale_amount = request.form['kale_amount']
-            print(kale_amount)
-        print(kale_amount)
-        print(collard_amount)
-        # kale = request.form['Kale']
-        # kale_amount = request.form['kale_amount']
-        # collards = request.form['Collards']
-        # collard_amount = request.form['collard_amount']
-        # broccoli = request.form['Broccoli']
-        # broccoli_amount = request.form['broccoli_amount']
-        # spinach = request.form['Spinach']
-        # spinach_amount = request.form['spinach_amount']
+        food = Food()
+        food.get_Food()
     username = session['username']
     #Creating a list to hold the quotes
     quotes = []
@@ -101,3 +89,5 @@ app.secret_key = 'n3A\xef(\xb0Cf^\xda\xf7\x97\xb1x\x8e\x94\xd5r\xe0\x11\x88\x1b\
 #This line will actually run the app.
 if __name__ == '__main__':
     app.run(debug=True)
+
+#Scrap code 
