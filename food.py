@@ -5,6 +5,7 @@ from flask import request
 #This class will deal with the amount of food that comes in. 
 class Food():
 
+    #Here I describe all the properties that each Food object will have
     def __init__(self):
         self.kale = "Kale"
         self.kale_amount = 0
@@ -15,6 +16,7 @@ class Food():
         self.spinach = "Spinach"
         self.spinach_amount = 0 
 
+    #This method will set the food amounts when the user submits the form
     def get_Food(self):
         if request.form.get('Kale'):
             self.kale_amount = request.form['kale_amount']

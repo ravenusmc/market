@@ -62,7 +62,9 @@ def home():
         return redirect(url_for('signup'))
     #This method fires when the user hits the submit button. 
     if request.method == 'POST':
+        #Creating a food object
         food = Food()
+        #Calling the get_food method which will set food amounts for each type of food. 
         food.get_Food()
     username = session['username']
     #Creating a list to hold the quotes
