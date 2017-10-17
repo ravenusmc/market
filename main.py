@@ -4,6 +4,7 @@ import requests
 
 #importing files I made for this project
 from food import *
+from food_data import *
 from quote import *
 from user import *
 
@@ -66,6 +67,9 @@ def home():
         food = Food()
         #Calling the get_food method which will set food amounts for each type of food. 
         food.get_Food()
+        #Creating the food data object to insert food into the database
+        # data = Food_Data()
+        # data.insert_food(food)
     username = session['username']
     #Creating a list to hold the quotes
     quotes = []
