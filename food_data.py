@@ -17,14 +17,13 @@ class Food_Data():
     def insert_food(self, food_list):
         count = 0
         while count < len(food_list):
-            
+            self._SQL = """insert into food
+              (name, amount, profit)
+              values
+              (%s, %s, %s)"""
+            self.cursor.execute(self._SQL, (food_list[count].name, food_list[count].amount, food_list[count].profit))
+            self.conn.commit()
             count += 1
-            # self._SQL = """insert into food
-            #   (name, username, password)
-            #   values
-            #   (%s, %s, %s)"""
-            # self.cursor.execute(self._SQL, (name, username, hashed))
-            # self.conn.commit()
 
 
 #Scrap Code 
@@ -41,10 +40,10 @@ class Food_Data():
 #     self.conn.commit()
 #     print(value)
 
-for attr, value in food.__dict__.items():
-if count == 0:
-    food_name = value
-    print(food_name)
-if count == 1:
-    amount = value
-    print(amount)
+# for attr, value in food.__dict__.items():
+# if count == 0:
+#     food_name = value
+#     print(food_name)
+# if count == 1:
+#     amount = value
+#     print(amount)
