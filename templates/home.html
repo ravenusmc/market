@@ -28,13 +28,13 @@
   <main>
     <h1>Check Out Customer</h1> 
     <h3>Welcome {{ name }}</h3>
-    <form method="POST">
+    <form method="POST" onsubmit="return validate();">
       <table>
           <tr><td class='center bold'>Food</td><td class='center bold'>Amount (lbs)</td></tr>
-          <tr><td><input type='checkbox' name='Kale' value='Kale'>Kale</td><td><input name='kale_amount' class='input_adjustment'></td></tr>
-          <tr><td><input type='checkbox' name='Collards' value='Collards'>Collards</td><td><input name='collard_amount' class='input_adjustment'></td></tr>
-          <tr><td><input type='checkbox' name='Broccoli' value='Broccoli'>Broccoli</td><td><input name='broccoli_amount' class='input_adjustment'></td></tr>
-          <tr><td><input type='checkbox' name='Spinach' value='Spinach'>Spinach</td><td><input name='spinach_amount' class='input_adjustment'></td></tr>
+          <tr><td><input type='checkbox' name='Kale' value='Kale'>Kale</td><td><input id='kale' name='kale_amount' class='input_adjustment'></td></tr>
+          <tr><td><input type='checkbox' name='Collards' value='Collards'>Collards</td><td><input id='collards' name='collard_amount' class='input_adjustment'></td></tr>
+          <tr><td><input type='checkbox' name='Broccoli' value='Broccoli'>Broccoli</td><td><input id='broccoli' name='broccoli_amount' class='input_adjustment'></td></tr>
+          <tr><td><input type='checkbox' name='Spinach' value='Spinach'>Spinach</td><td><input id='spinach' name='spinach_amount' class='input_adjustment'></td></tr>
       </table><br>
       <button>Submit</button>
     </form>
