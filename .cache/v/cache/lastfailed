@@ -1,0 +1,4 @@
+{
+  "test_one.py::test": true,
+  "test_one.py::test_failing": true
+}

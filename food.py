@@ -9,6 +9,7 @@ class Food():
     def __init__(self):
         self.name = ""
         self.amount = 0
+        self.profit = 0
         # self.kale = ""
         # self.kale_amount = 0
         # self.collards = ""
@@ -20,24 +21,36 @@ class Food():
 
     #This method will set the food amounts when the user submits the form
     def get_Food(self):
+        food_list = []
+        #These coditional statements get the information for the amount of food. 
         if request.form.get('Kale'):
             kale = Food()
             kale.name = "Kale"
-            kale.amount = request.form['kale_amount']
-            print(kale.name)
-            print(kale.amount)
+            kale.amount = int(request.form['kale_amount'])
+            kale.profit = kale.amount * 2
+            food_list.append(kale)
         if request.form.get('Collards'):
             collards = Food()
             collards.name = "Collards"
-            collards.amount = request.form['collard_amount']
-            print(collards.name)
-            print(collards.amount)
+            collards.amount = int(request.form['collard_amount'])
+            collards.profit = collards.amount * 3
+            food_list.append(collards)
         if request.form.get('Broccoli'):
-            self.Broccoli = "Broccoli"
-            self.broccoli_amount = request.form['broccoli_amount']
+            broccoli = Food()
+            broccoli.name = 'Broccoli'
+            broccoli.amount = int(request.form['broccoli_amount'])
+            broccoli.profit =  broccoli.amount * 4
+            food_list.append(broccoli)
         if request.form.get('Spinach'):
-            self.Spinach = "Spinach"
-            self.spinach_amount = request.form['spinach_amount']
+            spinach = Food()
+            spinach.name = 'Spinach'
+            spinach.amount = int(request.form['spinach_amount'])
+            spinach.profit = spinach.amount * 5
+            food_list.append(spinach)
+        return food_list
+
+
+
 
 
 

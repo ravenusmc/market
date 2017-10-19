@@ -66,10 +66,10 @@ def home():
         #Creating a food object
         food = Food()
         #Calling the get_food method which will set food amounts for each type of food. 
-        food.get_Food()
+        food_list = food.get_Food()
         #Creating the food data object to insert food into the database
         # data = Food_Data()
-        # data.insert_food(food)
+        # data.insert_food(food_list)
     username = session['username']
     #Creating a list to hold the quotes
     quotes = []
