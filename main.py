@@ -81,6 +81,11 @@ def home():
     quotes = quote.get_data(response)
     return render_template('home.html', name = username, quotes = quotes)
 
+#This route will take the user to the stats page
+@app.route('/stats', methods=['GET', "POST"])
+def stats():
+    return render_template('stats.html')
+
 #This function is what will log out the user.
 @app.route('/sign_out')
 def logout():

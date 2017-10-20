@@ -25,10 +25,34 @@ class Food_Data():
             self.conn.commit()
             count += 1
 
+    #This method will pull one type of food from the database. 
+    def pull_food(self):
+        #This list will be used to do a query on all the food types. 
+        foods = ['Kale', "Collards", "Spinach", 'Broccoli']
+        #This list will hold all the data coming back from the database
+        food_info = []
+        #A count variable to be used in the while loop
+        count = 0
+        while count < len(foods):
+            #The query for the database 
+            query = ("""SELECT * FROM food_data WHERE name = %s""")
+            self.cursor.execute(query, (foods[count],))
+            #A variable to hold the returning data
+            row = self.cursor.fetchall()
+            #The returned data is then placed into the food_info array
+            food_info.append(row)
+            count += 1
+        return food_list
+        
 
-#Scrap Code 
-#This will loop through the food object
-#use if then statement based on counter to assign values with it reaching 2 to insert!
+# test = Food_Data()
+# test.pull_food()
+#print(row[1][2])
+
+
+# Scrap Code 
+# This will loop through the food object
+# use if then statement based on counter to assign values with it reaching 2 to insert!
 # for attr, value in food.__dict__.items():
 #     food_name = value
 #     amount = value
