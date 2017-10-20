@@ -16,14 +16,14 @@ class Food_Data():
     #This method will insert a food object into the database.
     def insert_food(self, food_list):
         count = 0
-        # while count < len(food_list):
-        #     self._SQL = """insert into food
-        #       (name, amount, profit)
-        #       values
-        #       (%s, %s, %s)"""
-        #     self.cursor.execute(self._SQL, (food_list[count].name, food_list[count].amount, food_list[count].profit))
-        #     self.conn.commit()
-        #     count += 1
+        while count < len(food_list):
+            self._SQL = """insert into food_data
+              (name, amount, profit)
+              values
+              (%s, %s, %s)"""
+            self.cursor.execute(self._SQL, (food_list[count].name, food_list[count].amount, food_list[count].profit))
+            self.conn.commit()
+            count += 1
 
 
 #Scrap Code 

@@ -10,14 +10,6 @@ class Food():
         self.name = ""
         self.amount = 0
         self.profit = 0
-        # self.kale = ""
-        # self.kale_amount = 0
-        # self.collards = ""
-        # self.collard_amount = 0
-        # self.broccoli = ""
-        # self.broccoli_amount = 0
-        # self.spinach = ""
-        # self.spinach_amount = 0 
 
     #This method will set the food amounts when the user submits the form
     def get_Food(self):

@@ -102,6 +102,12 @@ main {
   align-items: center;
 }
 
+.btn_fix {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .input_adjustment {
   margin-left: 20px;
 }
