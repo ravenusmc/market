@@ -129,6 +129,23 @@ footer {
   margin-top: 25px;
 }
 
+/* CSS for stats page */
+
+.stats_container {
+  height: 100vh;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 10px;
+  grid-template-areas:
+  "header header"
+  "main aside"
+  "footer footer";
+
+}
+
 @media (max-width: 768px){
 
   .main_container {
