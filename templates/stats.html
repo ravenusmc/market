@@ -38,10 +38,9 @@
     </ul>
     <h3>Money Earned:</h3>
     <ul>
-      <li>Kale: $</li>
-      <li>Collards: $</li>
-      <li>Spinach: $</li>
-      <li>Broccoli: $</li>
+      {% for name, profit in profit.items() %}
+        <li>{{ name }}: ${{ profit }}</li>
+      {% endfor %}
     </ul>
   </aside>
 

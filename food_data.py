@@ -63,6 +63,20 @@ class Food_Data():
             count += 1
         #Returning the data
         return total_pounds
+
+    #This method will get the profits of all the different foods
+    def get_profit(self, food_data):
+        count = 0
+        total_profits = []
+        while count < len(food_data):
+            inner_count = 0;
+            total = 0
+            while inner_count < len(food_data[count]):
+                total = food_data[count][inner_count][2] + total
+                inner_count += 1
+            total_profits.append(total)
+            count += 1
+        return total_profits
         
 
 # test = Food_Data()
@@ -71,9 +85,9 @@ class Food_Data():
 
 
 # Scrap Code 
+
 # print(food_data)
 #print(food_data[0][0][1])
-
 
 
 # This will loop through the food object
