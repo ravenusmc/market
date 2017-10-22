@@ -30,7 +30,7 @@ class Food_Data():
         #This list will be used to do a query on all the food types. 
         foods = ['Kale', "Collards", "Spinach", 'Broccoli']
         #This list will hold all the data coming back from the database
-        food_info = []
+        food_data = []
         #A count variable to be used in the while loop
         count = 0
         while count < len(foods):
@@ -40,9 +40,29 @@ class Food_Data():
             #A variable to hold the returning data
             row = self.cursor.fetchall()
             #The returned data is then placed into the food_info array
-            food_info.append(row)
+            food_data.append(row)
             count += 1
-        return food_list
+        return food_data
+
+    #This method will get the pounds of all the different foods
+    def get_poundage(self, food_data):
+        #Counter to keep track of the while loop
+        count = 0
+        #This list will hold the total pounds for each type of food
+        total_pounds = []
+        #The first while loop will loop through the food_data list
+        while count < len(food_data):
+            inner_count = 0;
+            total = 0
+            #Second while loop will loop through each individual type of food
+            while inner_count < len(food_data[count]):
+                total = food_data[count][inner_count][1] + total
+                inner_count += 1
+            #Appending the total to the total pounds list
+            total_pounds.append(total)
+            count += 1
+        #Returning the data
+        return total_pounds
         
 
 # test = Food_Data()
@@ -51,6 +71,11 @@ class Food_Data():
 
 
 # Scrap Code 
+# print(food_data)
+#print(food_data[0][0][1])
+
+
+
 # This will loop through the food object
 # use if then statement based on counter to assign values with it reaching 2 to insert!
 # for attr, value in food.__dict__.items():

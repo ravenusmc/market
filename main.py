@@ -84,7 +84,17 @@ def home():
 #This route will take the user to the stats page
 @app.route('/stats', methods=['GET', "POST"])
 def stats():
-    return render_template('stats.html')
+    #I will be using his list of the foods for reference throughout the stats page
+    foods = ['Kale', 'Collards', 'Broccoli', 'Spinach']
+    #Creating a food object
+    food = Food_Data()
+    #Calling the pull_food method which will pull the data out of the database
+    food_data = food.pull_food()
+    #I then use the get_poundage method to get the total pounds for all the food
+    total_pounds = food.get_poundage(food_data)
+    #I turn the two lists, foods and total_pounds into a dictionary
+    pound_dictionary = dict(zip(foods, total_pounds))
+    return render_template('stats.html', pounds = pound_dictionary)
 
 #This function is what will log out the user.
 @app.route('/sign_out')

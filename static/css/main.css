@@ -145,10 +145,10 @@ footer {
 
 .stats_header {
   grid-area: stats_header;
-  height: 400px;
   background-image: url('/static/image/stats.jpg');
+  height: 400px;
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
@@ -180,6 +180,16 @@ footer {
       "main"
       "aside"
       "footer";
+  }
+
+  .stats_container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "stats_header"
+      "stats_aside"
+      "stats_main"
+      "footer";
+    ;
   }
 
 }
