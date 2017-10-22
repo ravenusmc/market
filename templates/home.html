@@ -24,11 +24,11 @@
 
 <div class='main_container'>
 
-  <header>
+  <header class='home_header'>
     <h1 class='home_title'>Farmers Register</h1>
   </header>
 
-  <main>
+  <main class='home_main'>
     <h1>Check Out Customer</h1> 
     <h3>Welcome {{ name }}</h3>
     <form method="POST" onsubmit="return validate();">
@@ -45,7 +45,7 @@
     </form>
   </main>
 
-  <aside>
+  <aside class='home_aside'>
     <h3 class='center'>Inspirational Quotes</h3>
     {% for quote in quotes %}
       <p>{{ quote }}</p>  
