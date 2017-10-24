@@ -63,12 +63,15 @@
 
 <script type="text/javascript">
 
-  var poundData = '{{ pounds }}';
+  function recievingData(pound_data){
+    console.log(pound_data);
+    return pound_data
+  }
 
-  // poundData = JSON.parse(poundData);
+  var test = recievingData({{ pound_data|safe }})
 
-  console.log(poundData)
-  // console.log( poundData )
+  console.log(test)
+
 
 </script>
 
