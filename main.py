@@ -1,5 +1,6 @@
 #importing outside libraries for use in the project
 from flask import Flask, session, jsonify, redirect, url_for, escape, render_template, request, flash
+import json 
 import requests
 
 #importing files I made for this project
@@ -94,9 +95,13 @@ def stats():
     total_pounds = food.get_poundage(food_data)
     #I turn the two lists, foods and total_pounds into a dictionary
     pound_dictionary = dict(zip(foods, total_pounds))
+
+    #poundData = json.dumps(pound_dictionary, ensure_ascii=False)
+
     total_profit = food.get_profit(food_data)
     profit_dictionary = dict(zip(foods, total_profit))
-    return render_template('stats.html', pounds = pound_dictionary, profit = profit_dictionary)
+    return render_template('stats.html', pounds=pound_dictionary, profit=profit_dictionary)
+
 
 #This function is what will log out the user.
 @app.route('/sign_out')
