@@ -135,7 +135,7 @@ footer {
   margin-right: 5%;
   margin-top: 20px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   grid-gap: 10px;
   grid-template-areas:
   "stats_header stats_header"
@@ -165,6 +165,7 @@ footer {
 
 .stats_main {
   grid-area: stats_main;
+  border: 2px solid red;
 }
 
 .stats_aside {
