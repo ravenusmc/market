@@ -64,6 +64,15 @@ class Food_Data():
         #Returning the data
         return total_pounds
 
+    #This method will get the total pounds that have been sold 
+    def get_total_pounds_all_foods(self, total_pounds):
+        total = 0
+        count = 0
+        while count < len(total_pounds):
+            total = total_pounds[count] + total
+            count += 1
+        return total
+
     #This method will get the profits of all the different foods
     def get_profit(self, food_data):
         count = 0
@@ -77,36 +86,14 @@ class Food_Data():
             total_profits.append(total)
             count += 1
         return total_profits
+
+    #This method will get the total dollar amount of food that has been sold 
+    def get_total_profit_all_foods(self, total_profit):
+        total = 0
+        count = 0
+        while count < len(total_profit):
+            total = total_profit[count] + total
+            count += 1
+        return total
+
         
-
-# test = Food_Data()
-# test.pull_food()
-#print(row[1][2])
-
-
-# Scrap Code 
-
-# print(food_data)
-#print(food_data[0][0][1])
-
-
-# This will loop through the food object
-# use if then statement based on counter to assign values with it reaching 2 to insert!
-# for attr, value in food.__dict__.items():
-#     food_name = value
-#     amount = value
-#     cost = value
-#     self._SQL = """insert into food
-#         (name, username, password)
-#     values (%s, %s, %s)"""
-#     self.cursor.execute(self._SQL, (food_name, amount, cost))
-#     self.conn.commit()
-#     print(value)
-
-# for attr, value in food.__dict__.items():
-# if count == 0:
-#     food_name = value
-#     print(food_name)
-# if count == 1:
-#     amount = value
-#     print(amount)

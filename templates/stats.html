@@ -36,12 +36,15 @@
         <li>{{ name }}: {{ pound }} Lbs</li>
       {% endfor %}
     </ul>
+    <p>Total poundage of food sold: {{ total_lbs }}</p>
+
     <h3>Money Earned:</h3>
     <ul>
       {% for name, profit in profit.items() %}
         <li>{{ name }}: ${{ profit }}</li>
       {% endfor %}
     </ul>
+    <p>Total Profit: {{ total_dollar_amount }}</p>
   </aside>
 
   <main class='stats_main'>

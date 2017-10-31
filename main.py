@@ -93,12 +93,17 @@ def stats():
     food_data = food.pull_food()
     #I then use the get_poundage method to get the total pounds for all the food
     total_pounds = food.get_poundage(food_data)
+    #This method gets the total pounds sold.
+    total_lbs = food.get_total_pounds_all_foods(total_pounds)
+    total_profit = food.get_profit(food_data)
+
+    #This method get the total profit
+    total_dollar_amount = food.get_total_profit_all_foods(total_profit)
+
     #I turn the two lists, foods and total_pounds into a dictionary
     pound_dictionary = dict(zip(foods, total_pounds))
-    # print(poundData)
-    total_profit = food.get_profit(food_data)
     profit_dictionary = dict(zip(foods, total_profit))
-    return render_template('stats.html', pounds=pound_dictionary, profit=profit_dictionary, pound_data=json.dumps(pound_dictionary))
+    return render_template('stats.html', pounds=pound_dictionary, total_lbs = total_lbs, profit=profit_dictionary, total_dollar_amount = total_dollar_amount, pound_data=json.dumps(pound_dictionary))
 
 
 #This function is what will log out the user.
