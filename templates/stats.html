@@ -65,15 +65,17 @@
 </div>
 
 <script type="text/javascript">
-
+  
+  //This funcion will receive the pound data. 
   function recievingData(pound_data){
-    console.log(pound_data);
     return pound_data
   }
 
-  var test = recievingData({{ pound_data|safe }})
+  var pound_data = recievingData({{ pound_data|safe }})
 
-  console.log(test)
+  console.log(pound_data)
+
+  //Seperate out food_data into food names and food amounts
 
 
 </script>
