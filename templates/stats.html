@@ -1,6 +1,19 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<style>
+
+  div.bar {
+      display: inline-block;
+      width: 30px;
+      height: 75px; /* Gets overriden by D3-assigned height below */
+      margin-right: 2px;
+      background-color: red;
+  }
+
+</style>
+
+<script src="//d3js.org/d3.v3.min.js"></script>
 
 <nav class="navbar-fixed navbar navbar-toggleable-md navbar-inverse bg-inverse">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +61,7 @@
   </aside>
 
   <main class='stats_main'>
-    <h1 class='center'>Graph Area</h1>
+
   </main>
 
 
@@ -65,17 +78,85 @@
 </div>
 
 <script type="text/javascript">
+
+  //Global variables 
+  let poundDataArray =[]; //This array will hold an array of objects
+  let w = 500;
+  let h = 300;
+  let barPadding = 1;
   
   //This funcion will receive the pound data. 
   function recievingData(pound_data){
     return pound_data
   }
+  
+  //This function will convert my pound_data object into an array of objects. This may be easier for me at the current
+  //time to work with D3.js. 
+  function turnToObject(pound_data){
+    for (i in pound_data){
+      poundDataArray.push({Food: i, Pounds: pound_data[i]});
+    }
+    return poundDataArray;
+  }
 
-  var pound_data = recievingData({{ pound_data|safe }})
+  let pound_data = recievingData({{ pound_data|safe }})
 
-  console.log(pound_data)
+  poundDataArray = turnToObject(pound_data);
 
-  //Seperate out food_data into food names and food amounts
+  //Creating SVG element 
+  var svg = d3.select(".stats_main")
+              .append('svg')
+              .attr("widtth", w)
+              .attr('height', h);
+
+  svg.selectAll("rect")
+      .data(poundDataArray)
+      .enter()
+      .append("rect")
+      .attr('x',  function(d,i){
+        return i * 40;
+      })
+      .attr('y', function(d){
+        return h - (d.Pounds * 4);
+      })
+      .attr('width', 30)
+      .attr('height', function(d){
+        return d.Pounds * 10;
+      })
+      .attr('fill', 'teal')
+
+  svg.selectAll('text')
+      .data(poundDataArray)
+      .enter()
+      .append('text')
+      .text(function(d){
+        return d.Pounds;
+      })
+      .attr('fill', 'white')
+      .attr('x',  function(d,i){
+        return i * 40;
+      })
+      .attr('y', function(d){
+        return h - (d.Pounds * 4) + 15;
+      });
+      // .attr('font-family', "sans-serif")
+      // .attr('font-size' "11px")
+      // ;
+
+
+
+  //Basic Working example
+  // var x = d3.scale.linear()
+  //   .domain([0, 50])
+  //   .range([0, 600]);
+
+  // d3.select(".stats_main")
+  // .selectAll("div")
+  // .data(poundDataArray)
+  // .enter().append("div")
+  //   .style("width", function(d) { return x(d.Pounds) + "px"; })
+  //   .text(function(d) { return d.Pounds; });
+
 
 
 </script>

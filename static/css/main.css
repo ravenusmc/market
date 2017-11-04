@@ -165,6 +165,9 @@ footer {
 
 .stats_main {
   grid-area: stats_main;
+}
+
+.pound_graph {
   border: 2px solid red;
 }
 
