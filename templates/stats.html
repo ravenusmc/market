@@ -61,7 +61,12 @@
   </aside>
 
   <main class='stats_main'>
-
+    <div class='pounds'>
+      <h1>Poundage Data</h1>
+    </div>
+    <div class='profit'>
+      <h1>Profit Data</h1>
+    </div>
   </main>
 
 
@@ -81,9 +86,17 @@
 
   //Global variables 
   let poundDataArray =[]; //This array will hold an array of objects
-  let w = 500;
+  let w = 300;
   let h = 300;
   let barPadding = 1;
+
+  // let yScale = d3.scaleLinear()
+  //          .domain([0, 30])
+  //          .range([1, 30]);
+
+  // let yAxis = d3.axisLeft()
+  //           .scale(yScale)
+  //           .ticks(4);
   
   //This funcion will receive the pound data. 
   function recievingData(pound_data){
@@ -103,8 +116,21 @@
 
   poundDataArray = turnToObject(pound_data);
 
+
+  /////Book examples
+  var scale = d3.scale.linear()
+                      .domain([100,500])
+                      .range([10,350])
+
+  // console.log(scale(100))
+  d3.max(poundDataArray, function(d){
+    console.log(d.Pounds);
+  })
+
+  ///// END book examples
+
   //Creating SVG element 
-  var svg = d3.select(".stats_main")
+  var svg = d3.select(".pounds")
               .append('svg')
               .attr("widtth", w)
               .attr('height', h);
@@ -116,14 +142,15 @@
       .attr('x',  function(d,i){
         return i * 40;
       })
+      //This line flips the bar right side up.
       .attr('y', function(d){
-        return h - (d.Pounds * 4);
+        return h - (d.Pounds * 5);
       })
       .attr('width', 30)
       .attr('height', function(d){
         return d.Pounds * 10;
       })
-      .attr('fill', 'teal')
+      .attr('fill', 'steelblue')
 
   svg.selectAll('text')
       .data(poundDataArray)
@@ -132,16 +159,21 @@
       .text(function(d){
         return d.Pounds;
       })
-      .attr('fill', 'white')
+      .attr('fill', 'black')
       .attr('x',  function(d,i){
-        return i * 40;
+        return i * 41;
       })
       .attr('y', function(d){
-        return h - (d.Pounds * 4) + 15;
+        return h - (d.Pounds * 5) - 5;
+        //return h - (d.Pounds * 4) + 15;
       });
-      // .attr('font-family', "sans-serif")
-      // .attr('font-size' "11px")
-      // ;
+
+  //Create Y axis
+  // svg.append("g")
+  //     .attr("class", "axis")
+  //     .attr("transform", "translate(" + 0+ ",0)")
+  //     .call(yAxis);
+  // });
 
 
 
