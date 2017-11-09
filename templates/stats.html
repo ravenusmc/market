@@ -119,8 +119,8 @@
 
   /////Book examples
   var scale = d3.scale.linear()
-                      .domain([100,500])
-                      .range([10,350])
+                      .domain([0, d3.max(poundDataArray, function(d){return d.Pounds;})])
+                      .range([0,w])
 
   // console.log(scale(100))
   d3.max(poundDataArray, function(d){
@@ -132,13 +132,14 @@
   //Creating SVG element 
   var svg = d3.select(".pounds")
               .append('svg')
-              .attr("widtth", w)
+              .attr("width", w)
               .attr('height', h);
 
   svg.selectAll("rect")
       .data(poundDataArray)
       .enter()
       .append("rect")
+      //This moves the bars left or right
       .attr('x',  function(d,i){
         return i * 40;
       })
@@ -146,7 +147,9 @@
       .attr('y', function(d){
         return h - (d.Pounds * 5);
       })
-      .attr('width', 30)
+      //This changes the width of the bars
+      .attr('width', 35)
+
       .attr('height', function(d){
         return d.Pounds * 10;
       })
@@ -174,21 +177,6 @@
   //     .attr("transform", "translate(" + 0+ ",0)")
   //     .call(yAxis);
   // });
-
-
-
-  //Basic Working example
-  // var x = d3.scale.linear()
-  //   .domain([0, 50])
-  //   .range([0, 600]);
-
-  // d3.select(".stats_main")
-  // .selectAll("div")
-  // .data(poundDataArray)
-  // .enter().append("div")
-  //   .style("width", function(d) { return x(d.Pounds) + "px"; })
-  //   .text(function(d) { return d.Pounds; });
-
 
 
 </script>

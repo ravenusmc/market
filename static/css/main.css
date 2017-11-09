@@ -185,6 +185,11 @@ footer {
   grid-area: stats_aside;
 }
 
+svg {
+  margin-left: 100px;
+  margin-bottom: 100px;
+}
+
 @media (max-width: 768px){
 
   .main_container {
