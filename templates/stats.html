@@ -12,8 +12,8 @@
   }
 
 </style>
-
-<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<!-- <script src="//d3js.org/d3.v3.min.js"></script> -->
 
 <nav class="navbar-fixed navbar navbar-toggleable-md navbar-inverse bg-inverse">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -118,16 +118,30 @@
 
 
   /////Book examples
-  var scale = d3.scale.linear()
-                      .domain([0, d3.max(poundDataArray, function(d){return d.Pounds;})])
-                      .range([0,w])
+  // var scale = d3.scale.linear()
+  //                     .domain([0, d3.max(poundDataArray, function(d){return d.Pounds;})])
+  //                     .range([0,w])
 
-  // console.log(scale(100))
-  d3.max(poundDataArray, function(d){
-    console.log(d.Pounds);
-  })
-
+  // // console.log(scale(100))
+  // d3.max(poundDataArray, function(d){
+  //   console.log(d.Pounds);
+  // })
   ///// END book examples
+
+  // var axisScale = d3.scale.linear()
+  //                         .domain([0,4])
+  //                         .range([0,200]);
+
+  // var xAxis = d3.svg.axis()
+  //                   .scale(axisScale);
+  
+  var axisScale = d3.scaleLinear()
+                          .domain([0,4])
+                          .range([0,200]);
+
+  var xAxis = d3.axisBottom()
+                .scale(axisScale)
+                .ticks(4);
 
   //Creating SVG element 
   var svg = d3.select(".pounds")
@@ -170,6 +184,19 @@
         return h - (d.Pounds * 5) - 5;
         //return h - (d.Pounds * 4) + 15;
       });
+
+  var xAxisGroup = svg.append("g")
+                      .attr("transform", "translate(0," + 200 + ")")
+                      .call(xAxis)
+                      .selectAll("text")
+                      .data(poundDataArray)
+                      .text(function(d){
+                          return d.Food;
+                      })
+                      .style("text-anchor", "end")
+                      .attr("dx", "-.8em")
+                      .attr("dy", "-.55em")
+                      .attr("transform", "rotate(-45)" );
 
   //Create Y axis
   // svg.append("g")
