@@ -87,16 +87,11 @@
   //Global variables 
   let poundDataArray =[]; //This array will hold an array of objects
   let w = 300;
-  let h = 300;
+  let h = 350;
   let barPadding = 1;
+  let margin = {top: 5, right: 200, bottom: 70, left: 25}
 
-  // let yScale = d3.scaleLinear()
-  //          .domain([0, 30])
-  //          .range([1, 30]);
-
-  // let yAxis = d3.axisLeft()
-  //           .scale(yScale)
-  //           .ticks(4);
+  //This code receives the data and builds the data the way that I want it. 
   
   //This funcion will receive the pound data. 
   function recievingData(pound_data){
@@ -117,55 +112,58 @@
   poundDataArray = turnToObject(pound_data);
 
 
-  /////Book examples
-  // var scale = d3.scale.linear()
-  //                     .domain([0, d3.max(poundDataArray, function(d){return d.Pounds;})])
-  //                     .range([0,w])
-
-  // // console.log(scale(100))
-  // d3.max(poundDataArray, function(d){
-  //   console.log(d.Pounds);
-  // })
-  ///// END book examples
-
-  // var axisScale = d3.scale.linear()
-  //                         .domain([0,4])
-  //                         .range([0,200]);
-
-  // var xAxis = d3.svg.axis()
-  //                   .scale(axisScale);
+  // Code below here builds D3.JS graphs 
   
-  var axisScale = d3.scaleLinear()
-                          .domain([0,4])
-                          .range([0,200]);
+  //X-Axis Code
+  var xScale = d3.scaleLinear()
+                .domain([0,4])
+                .range([0,200]);
 
   var xAxis = d3.axisBottom()
-                .scale(axisScale)
+                .scale(xScale)
                 .ticks(4);
+
+  //Y-Axis Code
+  var yScale = d3.scaleLinear()
+                //Larger number is on the left because if not then the y axis will 
+                //start with 0 at the top. 
+                 .domain([100, 0])
+                 //This appears to move the y axis itself up and down
+                 .range([0, 300]);
+
+  var yAxis = d3.axisLeft()
+                .scale(yScale)
+                .ticks(5);
 
   //Creating SVG element 
   var svg = d3.select(".pounds")
               .append('svg')
               .attr("width", w)
-              .attr('height', h);
+              .attr('height', h)
+              .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   svg.selectAll("rect")
       .data(poundDataArray)
       .enter()
       .append("rect")
-      //This moves the bars left or right
-      .attr('x',  function(d,i){
-        return i * 40;
+      //This moves the bars left or right, larger numbers to the right.
+      //i is essentially the index of the data length. A value of simply 
+      //i will have all of the bars right on top of each other. 
+      .attr('x',  function(d, i){
+        // return i * 40;
+        return i * (w / poundDataArray.length);
       })
-      //This line flips the bar right side up.
+      //This line flips the bar right side up. (Basically, graph may be upside down)
       .attr('y', function(d){
-        return h - (d.Pounds * 5);
+        // return 350 - (d.Pounds * 5);
+        return h - d.Pounds;
       })
+      // .attr('width', 35)
       //This changes the width of the bars
-      .attr('width', 35)
-
+      .attr('width', w / poundDataArray.length - barPadding)
       .attr('height', function(d){
-        return d.Pounds * 10;
+        return d.Pounds * 4;
       })
       .attr('fill', 'steelblue')
 
@@ -177,16 +175,18 @@
         return d.Pounds;
       })
       .attr('fill', 'black')
+      //This moves the text to the left and right. Larger numbers to the right.
       .attr('x',  function(d,i){
-        return i * 41;
+        return i * 43;
       })
+      //This moves the text up and down. 
       .attr('y', function(d){
-        return h - (d.Pounds * 5) - 5;
-        //return h - (d.Pounds * 4) + 15;
+        return h - (d.Pounds * 5) - 10;
       });
 
+  //Creating X axis
   var xAxisGroup = svg.append("g")
-                      .attr("transform", "translate(0," + 200 + ")")
+                      .attr("transform", "translate(0," + 300 + ")")
                       .call(xAxis)
                       .selectAll("text")
                       .data(poundDataArray)
@@ -196,16 +196,15 @@
                       .style("text-anchor", "end")
                       .attr("dx", "-.8em")
                       .attr("dy", "-.55em")
-                      .attr("transform", "rotate(-45)" );
+                      .attr("transform", "rotate(-60)" );
 
   //Create Y axis
-  // svg.append("g")
-  //     .attr("class", "axis")
-  //     .attr("transform", "translate(" + 0+ ",0)")
-  //     .call(yAxis);
-  // });
+  svg.append("g")
+      .attr("class", "axis")
+      .call(yAxis);
+
 
 
 </script>
-
+<script src='{{ url_for('static', filename='js/pounds.js') }}'></script>
 {% endblock %}
