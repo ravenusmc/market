@@ -60,14 +60,16 @@
     <p>Total Profit: {{ total_dollar_amount }}</p>
   </aside>
 
-  <main class='stats_main'>
+  <!-- <main class='stats_main'> -->
+  <main>
     <div class='pounds'>
       <h1>Poundage Data</h1>
     </div>
-    <div class='profit'>
-      <h1>Profit Data</h1>
-    </div>
   </main>
+
+<!--       <div class='profit'>
+      <h1>Profit Data</h1>
+    </div> -->
 
 
   <footer class='stats_footer'>
@@ -85,11 +87,11 @@
 <script type="text/javascript">
 
   //Global variables 
-  let poundDataArray =[]; //This array will hold an array of objects
-  let w = 300;
-  let h = 350;
-  let barPadding = 1;
-  let margin = {top: 5, right: 200, bottom: 70, left: 25}
+  var poundDataArray =[]; //This array will hold an array of objects
+  var w = 300;
+  var h = 350;
+  var barPadding = 1;
+  var margin = {top: 5, right: 200, bottom: 70, left: 25}
 
   //This code receives the data and builds the data the way that I want it. 
   
@@ -107,7 +109,7 @@
     return poundDataArray;
   }
 
-  let pound_data = recievingData({{ pound_data|safe }})
+  var pound_data = recievingData({{ pound_data|safe }})
 
   poundDataArray = turnToObject(pound_data);
 
@@ -117,7 +119,7 @@
   //X-Axis Code
   var xScale = d3.scaleLinear()
                 .domain([0,4])
-                .range([0,200]);
+                .range([0,300]);
 
   var xAxis = d3.axisBottom()
                 .scale(xScale)
@@ -151,38 +153,35 @@
       //i is essentially the index of the data length. A value of simply 
       //i will have all of the bars right on top of each other. 
       .attr('x',  function(d, i){
-        // return i * 40;
         return i * (w / poundDataArray.length);
       })
       //This line flips the bar right side up. (Basically, graph may be upside down)
-      .attr('y', function(d){
-        // return 350 - (d.Pounds * 5);
+      .attr('y', function(d) {
         return h - d.Pounds;
       })
-      // .attr('width', 35)
       //This changes the width of the bars
       .attr('width', w / poundDataArray.length - barPadding)
       .attr('height', function(d){
-        return d.Pounds * 4;
-      })
-      .attr('fill', 'steelblue')
-
-  svg.selectAll('text')
-      .data(poundDataArray)
-      .enter()
-      .append('text')
-      .text(function(d){
         return d.Pounds;
       })
-      .attr('fill', 'black')
-      //This moves the text to the left and right. Larger numbers to the right.
-      .attr('x',  function(d,i){
-        return i * 43;
-      })
-      //This moves the text up and down. 
-      .attr('y', function(d){
-        return h - (d.Pounds * 5) - 10;
-      });
+      .attr('fill', 'steelblue');
+
+  // svg.selectAll('text')
+  //     .data(poundDataArray)
+  //     .enter()
+  //     .append('text')
+  //     .text(function(d){
+  //       return d.Pounds;
+  //     })
+  //     .attr('fill', 'black')
+  //     //This moves the text to the left and right. Larger numbers to the right.
+  //     .attr('x',  function(d,i){
+  //       return i * 43;
+  //     })
+  //     //This moves the text up and down. 
+  //     .attr('y', function(d){
+  //       return h - (d.Pounds * 5) - 10;
+  //     });
 
   //Creating X axis
   var xAxisGroup = svg.append("g")
@@ -203,8 +202,7 @@
       .attr("class", "axis")
       .call(yAxis);
 
-
-
 </script>
+
 <script src='{{ url_for('static', filename='js/pounds.js') }}'></script>
 {% endblock %}
