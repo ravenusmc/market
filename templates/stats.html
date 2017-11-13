@@ -133,13 +133,19 @@
   var yScale = d3.scaleLinear()
                 //Larger number is on the left because if not then the y axis will 
                 //start with 0 at the top. 
-                 .domain([maxPound,0])
+                 .domain([0, maxPound])
                  //This appears to move the y axis itself up and down
-                 .range([0, 200]);
+                 .range([0, h]);
+
+  // console.log('Test 8: ' + yScale(8))
+  // console.log('Test 20: ' + yScale(20))
+  // console.log('Test 0: ' + yScale(0))
+  // console.log('Test 3: ' + yScale(3))
 
   var yAxis = d3.axisLeft()
                 .scale(yScale)
                 .ticks(5);
+
 
   //Creating SVG element 
   var svg = d3.select(".pounds")
@@ -161,12 +167,14 @@
       })
       //This line flips the bar right side up. (Basically, graph may be upside down)
       .attr('y', function(d) {
-        return 300 - yScale(parseInt(d.Pounds));
+        return 350 - yScale(d.Pounds);
       })
       //This changes the width of the bars
-      .attr('width', w / poundDataArray.length - barPadding)
+      .attr('width', (w / 4) - 25)
       .attr('height', function(d){
-        return yScale(parseInt(d.Pounds));
+        console.log((yScale(0) - yScale(d.Pounds)) * -1);
+        //return (yScale(0) - yScale(d.Pounds)) * -1;
+        return yScale(d.Pounds);
       })
       .attr('fill', 'steelblue');
 
