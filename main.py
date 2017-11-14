@@ -103,7 +103,7 @@ def stats():
     #I turn the two lists, foods and total_pounds into a dictionary
     pound_dictionary = dict(zip(foods, total_pounds))
     profit_dictionary = dict(zip(foods, total_profit))
-    return render_template('stats.html', pounds=pound_dictionary, total_lbs = total_lbs, profit=profit_dictionary, total_dollar_amount = total_dollar_amount, pound_data=json.dumps(pound_dictionary))
+    return render_template('stats.html', pounds=pound_dictionary, total_lbs = total_lbs, profit=profit_dictionary, total_dollar_amount = total_dollar_amount, pound_data=json.dumps(pound_dictionary), profit_data=json.dumps(profit_dictionary) )
 
 
 #This function is what will log out the user.

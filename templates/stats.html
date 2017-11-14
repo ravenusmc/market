@@ -63,14 +63,12 @@
   <!-- <main class='stats_main'> -->
   <main>
     <div class='pounds'>
-      <h1 class='center'>Poundage Data</h1>
+      <h1 class='center'>Pound Data</h1>
+    </div>
+    <div class='profit'>
+      <h1 class='center'>Profit Data</h1>
     </div>
   </main>
-
-<!--       <div class='profit'>
-      <h1>Profit Data</h1>
-    </div> -->
-
 
   <footer class='stats_footer'>
      Copyright &copy; 2017 Mike Cuddy Productions
@@ -87,7 +85,8 @@
 <script type="text/javascript">
 
   //Global variables 
-  var poundDataArray =[]; //This array will hold an array of objects
+  var poundDataArray = []; //This array will hold an array of objects
+  var profitDataArray = [];
   var w = 350;
   var h = 350;
   var barPadding = 1;
@@ -113,7 +112,7 @@
 
   poundDataArray = turnToObject(pound_data);
 
-  // Code below here builds D3.JS graphs 
+  // Code below here builds D3.JS graph for pounds
 
   var maxPound = d3.max(poundDataArray, 
     function(d) {return parseInt(d.Pounds)}
@@ -135,11 +134,6 @@
                  .domain([0,maxPound])
                  //This appears to move the y axis itself up and down
                  .range([h - margin.bottom, margin.top]);
-
-  // console.log('Test 8: ' + yScale(8))
-  // console.log('Test 20: ' + yScale(20))
-  // console.log('Test 0: ' + yScale(0))
-  // console.log('Test 3: ' + yScale(3))
 
   var yAxis = d3.axisLeft()
                 .scale(yScale)
@@ -171,7 +165,6 @@
       //This changes the width of the bars
       .attr('width', (w / 4) - 25)
       .attr('height', function(d){
-        console.log(h - margin.bottom - yScale(d.Pounds))
         return h - margin.bottom - yScale(d.Pounds);
       })
       .attr('fill', 'steelblue');
@@ -211,6 +204,53 @@
   svg.append("g")
       .attr("class", "axis")
       .call(yAxis);
+
+  ////// Code dealing with Profits data 
+  
+  //This funcion will receive the profit data. 
+  function recievingProfitData(profit_data){
+    return profit_data
+  }
+  
+  //This function will turn the profit data into an array of objects. 
+  function turnProfitToObject(profit_data){
+    for (i in profit_data){
+      profitDataArray.push({Food: i, Profit: profit_data[i]});
+    }
+    return profitDataArray;
+  }
+
+  var profit_data = recievingProfitData({{ profit_data|safe }})
+
+  profitDataArray = turnProfitToObject(profit_data);
+
+  //Specific D3 Code for the Profi graph
+
+  //Getting the max value from the data
+  var maxProfit = d3.max(profitDataArray, 
+    function(d) {return parseInt(d.Profit)}
+  );
+
+  //Y-Axis Code
+  var yScaleProfit = d3.scaleLinear()
+                //Larger number is on the left because if not then the y axis will 
+                //start with 0 at the top. 
+                 .domain([0, maxProfit])
+                 //This appears to move the y axis itself up and down
+                 .range([h - margin.bottom, margin.top]);
+
+  var yAxis = d3.axisLeft()
+                .scale(yScaleProfit)
+                .ticks(5);
+
+  var svg = d3.select(".profit")
+            .append('svg')
+            .attr("width", w)
+            .attr('height', h)
+            .append("g")
+              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
 
 </script>
 
