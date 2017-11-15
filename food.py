@@ -14,45 +14,40 @@ class Food():
     #This method will set the food amounts when the user submits the form
     def get_Food(self):
         food_list = []
+        #Here I'm receiving the values from the form that the user entered. 
+        kale = int(request.form[''])
+        collards = int(request.form['spinach_amount'])
+        broccoli = int(request.form[''])
+        spinach = int(request.form['spinach_amount'])
         #These coditional statements get the information for the amount of food. 
-        if request.form.get('Kale'):
-            kale = Food()
+        if kale:
+            #Creating the food object
+            kale_object = Food()
+            #setting the name of the food object
             kale.name = "Kale"
-            kale.amount = int(request.form['kale_amount'])
-            kale.profit = kale.amount * 2
-            food_list.append(kale)
-        if request.form.get('Collards'):
-            collards = Food()
+            #setting the amount of pounds of the food object
+            kale.amount = kale
+            #Setting the specific profi earned based off poundage to the food object
+            kale.profit = kale_object.amount * 2
+            #Appending all the data to the food list which will hold each type of food object. 
+            food_list.append(kale_object)
+        if collards:
+            collards_object = Food()
             collards.name = "Collards"
-            collards.amount = int(request.form['collard_amount'])
-            collards.profit = collards.amount * 3
-            food_list.append(collards)
-        if request.form.get('Broccoli'):
-            broccoli = Food()
+            collards.amount = collards
+            collards.profit = collards_object.amount * 3
+            food_list.append(collards_object)
+        if broccoli:
+            broccoli_object = Food()
             broccoli.name = 'Broccoli'
-            broccoli.amount = int(request.form['broccoli_amount'])
-            broccoli.profit =  broccoli.amount * 4
-            food_list.append(broccoli)
-        if request.form.get('Spinach'):
-            spinach = Food()
-            spinach.name = 'Spinach'
-            spinach.amount = int(request.form['spinach_amount'])
-            spinach.profit = spinach.amount * 5
-            food_list.append(spinach)
+            broccoli.amount = broccoli
+            broccoli.profit =  broccoli_object.amount * 4
+            food_list.append(broccoli_object)
+        if spinach:
+            spinach_object = Food()
+            spinach_object.name = 'Spinach'
+            spinach_object.amount = spinach
+            spinach_object.profit = spinach_object.amount * 5
+            food_list.append(spinach_object)
         return food_list
 
-
-
-
-
-
-
-
-
-#Scrap code -Code that I was using then realized that I do not need it but keep it around 'just in case'
-
-# if request.form.get('Kale') and request.form.get('Collards') and request.form.get('Broccoli') and request.form.get('Spinach'):
-#     self.kale_amount = request.form['kale_amount']
-#     self.collard_amount = request.form['collard_amount']
-#     self.broccoli_amount = request.form['broccoli_amount']
-#     self.spinach_amount = request.form['spinach_amount']

@@ -93,6 +93,7 @@ def stats():
     food_data = food.pull_food()
     #I then use the get_poundage method to get the total pounds for all the food
     total_pounds = food.get_poundage(food_data)
+
     #This method gets the total pounds sold.
     total_lbs = food.get_total_pounds_all_foods(total_pounds)
     total_profit = food.get_profit(food_data)
