@@ -15,33 +15,33 @@ class Food():
     def get_Food(self):
         food_list = []
         #Here I'm receiving the values from the form that the user entered. 
-        kale = int(request.form[''])
-        collards = int(request.form['spinach_amount'])
-        broccoli = int(request.form[''])
-        spinach = int(request.form['spinach_amount'])
+        kale = request.form['kale_amount']
+        collards = request.form['collard_amount']
+        broccoli = request.form['broccoli_amount']
+        spinach = request.form['spinach_amount']
         #These coditional statements get the information for the amount of food. 
         if kale:
             #Creating the food object
             kale_object = Food()
             #setting the name of the food object
-            kale.name = "Kale"
+            kale_object.name = "Kale"
             #setting the amount of pounds of the food object
-            kale.amount = kale
+            kale_object.amount = kale
             #Setting the specific profi earned based off poundage to the food object
-            kale.profit = kale_object.amount * 2
+            kale_object.profit = kale_object.amount * 2
             #Appending all the data to the food list which will hold each type of food object. 
             food_list.append(kale_object)
         if collards:
             collards_object = Food()
-            collards.name = "Collards"
-            collards.amount = collards
-            collards.profit = collards_object.amount * 3
+            collards_object.name = "Collards"
+            collards_object.amount = collards
+            collards_object.profit = collards_object.amount * 3
             food_list.append(collards_object)
         if broccoli:
             broccoli_object = Food()
-            broccoli.name = 'Broccoli'
-            broccoli.amount = broccoli
-            broccoli.profit =  broccoli_object.amount * 4
+            broccoli_object.name = 'Broccoli'
+            broccoli_object.amount = broccoli
+            broccoli_object.profit =  broccoli_object.amount * 4
             food_list.append(broccoli_object)
         if spinach:
             spinach_object = Food()
