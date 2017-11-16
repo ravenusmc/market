@@ -32,7 +32,8 @@ class Food_Data():
         #This list will be used to do a query on all the food types. 
         foods = ['Kale', "Collards", "Spinach", 'Broccoli']
         #This list will hold all the data coming back from the database
-        food_data = []
+        # food_data = []
+        food_data = {}
         #A count variable to be used in the while loop
         count = 0
         while count < len(foods):
@@ -41,8 +42,10 @@ class Food_Data():
             self.cursor.execute(query, (foods[count],))
             #A variable to hold the returning data
             row = self.cursor.fetchall()
+            #Placing the food into the dictionary. 
+            food_data[foods[count]] = row
             #The returned data is then placed into the food_info array
-            food_data.append(row)
+            # food_data.append(row)
             count += 1
         return food_data
 
