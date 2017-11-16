@@ -28,26 +28,26 @@ class Food():
             #setting the amount of pounds of the food object
             kale_object.amount = kale
             #Setting the specific profi earned based off poundage to the food object
-            kale_object.profit = kale_object.amount * 2
+            kale_object.profit = int(kale) * 2
             #Appending all the data to the food list which will hold each type of food object. 
             food_list.append(kale_object)
         if collards:
             collards_object = Food()
             collards_object.name = "Collards"
             collards_object.amount = collards
-            collards_object.profit = collards_object.amount * 3
+            collards_object.profit = int(collards) * 3
             food_list.append(collards_object)
         if broccoli:
             broccoli_object = Food()
             broccoli_object.name = 'Broccoli'
             broccoli_object.amount = broccoli
-            broccoli_object.profit =  broccoli_object.amount * 4
+            broccoli_object.profit =  int(broccoli) * 4
             food_list.append(broccoli_object)
         if spinach:
             spinach_object = Food()
             spinach_object.name = 'Spinach'
             spinach_object.amount = spinach
-            spinach_object.profit = spinach_object.amount * 5
+            spinach_object.profit = int(spinach) * 5
             food_list.append(spinach_object)
         return food_list
 
