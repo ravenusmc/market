@@ -20,7 +20,6 @@ body, html {
 /* CSS for Login page */
 .login_main {
   height: 95%;
-  background-color: #3F658A;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,7 +27,6 @@ body, html {
 }
 
 .login_main_div {
-  background-color: #8a5a3f;
   padding: 15px;
   border-radius: 10px;
 }

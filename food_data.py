@@ -49,6 +49,10 @@ class Food_Data():
             count += 1
         return food_data
 
+    
+    def get_pounds():
+
+
     #This method will get the pounds of all the different foods
     def get_poundage(self, food_data):
         #Counter to keep track of the while loop

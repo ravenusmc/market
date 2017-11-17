@@ -92,8 +92,22 @@ def stats():
     #Calling the pull_food method which will pull the data out of the database
     food_data = food.pull_food()
     print(food_data)
-    print(food_data["Broccoli"][0][1])
-    input()
+    #print(food_data["Broccoli"][0][1])
+    # print(len(food_data["Broccoli"]))
+
+    
+    pound_data = {}
+    for key, value in food_data.items():
+        count = 0
+        total = 0
+        while count < len(food_data[key]):
+            # print(food_data[key][count][1])
+            total = food_data[key][count][1] + total 
+            # print(total)
+            # input()
+            count += 1
+        pound_data[key] = total
+    return pound_data
 
     #I then use the get_poundage method to get the total pounds for all the food
     # total_pounds = food.get_poundage(food_data)
