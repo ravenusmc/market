@@ -204,6 +204,98 @@
       .attr("class", "axis")
       .call(yAxis);
 
+  ///////////////////////////////
+  //Specific D3 Code for the Profit graph
+  //////////////////////////////
+
+  //This funcion will receive the profit data. 
+  function recievingProfitData(profit_data){
+    return profit_data
+  }
+  
+  //This function will turn the profit data into an array of objects. 
+  function turnProfitToObject(profit_data){
+    for (i in profit_data){
+      profitDataArray.push({Food: i, Profit: profit_data[i]});
+    }
+    return profitDataArray;
+  }
+
+  var profit_data = recievingProfitData({{ profit_data|safe }})
+
+  profitDataArray = turnProfitToObject(profit_data);
+
+  //Getting the max value from the data
+  var maxProfit = d3.max(profitDataArray, 
+    function(d) {return parseInt(d.Profit)}
+  );
+
+  //Y-Axis Code
+  var yScaleProfit = d3.scaleLinear()
+                //Larger number is on the left because if not then the y axis will 
+                //start with 0 at the top. 
+                 .domain([0, maxProfit])
+                 //This appears to move the y axis itself up and down
+                 .range([h - margin.bottom, margin.top]);
+
+  var yAxisProfit = d3.axisLeft()
+                .scale(yScaleProfit)
+                .ticks(5);
+
+    //X-Axis Code
+  var xScaleProfit = d3.scaleLinear()
+                        .domain([0,4])
+                        .range([0,350]);
+
+  var xAxisProfit = d3.axisBottom()
+                      .scale(xScaleProfit)
+                      .ticks(4);
+
+  var svg = d3.select(".profit")
+            .append('svg')
+            .attr("width", w)
+            .attr('height', h)
+            .append("g")
+              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    svg.selectAll("rect")
+      .data(profitDataArray)
+      .enter()
+      .append("rect")
+      .attr('x',  function(d, i){
+        return i * (w / profitDataArray.length);
+      })
+      //This line flips the bar right side up. (Basically, graph may be upside down)
+      .attr('y', function(d) {
+         return yScaleProfit(d.Profit);
+      })
+      //This changes the width of the bars
+      .attr('width', (w / 4) - 25)
+      .attr('height', function(d){
+        return h - margin.bottom - yScaleProfit(d.Profit);
+      })
+      .attr('fill', 'steelblue');
+
+
+  //Creating X axis
+  var xAxisGroup = svg.append("g")
+                      .attr("transform", "translate(0," + 283 + ")")
+                      .call(xAxisProfit)
+                      .selectAll("text")
+                      .data(profitDataArray)
+                      .text(function(d){
+                          return d.Food;
+                      })
+                      .style("text-anchor", "end")
+                      .attr("dx", "1em")
+                      .attr("dy", "3em")
+                      .attr("transform", "rotate(-60)" );
+
+  //Creating y-axis
+  svg.append("g")
+    .attr("class", "axis")
+    .call(yAxisProfit);
+
 </script>
 
 
