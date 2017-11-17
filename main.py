@@ -91,24 +91,16 @@ def stats():
     food = Food_Data()
     #Calling the pull_food method which will pull the data out of the database
     food_data = food.pull_food()
-    print(food_data)
+    #Here I'm getting the total pounds for EACH food 
+    pound_data = food.get_pounds(food_data)
+    #Here I'm getting the total pounds for all the food
+    total_pounds = food.total_pounds(pound_data) 
+
+
+
+    #print(food_data)
     #print(food_data["Broccoli"][0][1])
     # print(len(food_data["Broccoli"]))
-
-    
-    pound_data = {}
-    for key, value in food_data.items():
-        count = 0
-        total = 0
-        while count < len(food_data[key]):
-            # print(food_data[key][count][1])
-            total = food_data[key][count][1] + total 
-            # print(total)
-            # input()
-            count += 1
-        pound_data[key] = total
-    return pound_data
-
     #I then use the get_poundage method to get the total pounds for all the food
     # total_pounds = food.get_poundage(food_data)
     # #This method gets the total pounds sold.
@@ -119,13 +111,14 @@ def stats():
     # #I turn the two lists, foods and total_pounds into a dictionary
     # pound_dictionary = dict(zip(foods, total_pounds)) #The issue appears to be here. 
     # profit_dictionary = dict(zip(foods, total_profit))
-    pound_dictionary = 0
-    total_lbs = 0
-    profit_dictionary = 0
-    total_dollar_amount = 0
-    return render_template('stats.html', pounds=pound_dictionary, total_lbs = total_lbs, 
-        profit=profit_dictionary, total_dollar_amount = total_dollar_amount, 
-        pound_data=json.dumps(pound_dictionary), profit_data=json.dumps(profit_dictionary) )
+    # pound_dictionary = 0
+    # total_lbs = 0
+    # profit_dictionary = 0
+    # total_dollar_amount = 0
+    return render_template('stats_page.html', pound_info = pound_data, total_pounds = total_pounds, pound_data=json.dumps(pound_data)  )
+    # return render_template('stats.html', pounds=pound_dictionary, total_lbs = total_lbs, 
+    #     profit=profit_dictionary, total_dollar_amount = total_dollar_amount, 
+    #     pound_data=json.dumps(pound_dictionary), profit_data=json.dumps(profit_dictionary) )
 
 
 #This function is what will log out the user.
