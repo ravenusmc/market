@@ -16,8 +16,6 @@ class Food_Data():
     #This method will insert a food object into the database.
     def insert_food(self, food_list):
         count = 0
-        print(food_list[0].name)
-        input()
         while count < len(food_list):
             self._SQL = """insert into food_data
               (name, amount, profit)
@@ -53,13 +51,18 @@ class Food_Data():
     def get_pounds(self, food_data):
         #Setting up the pound dictionary. This will hold the 
         pound_data = {}
+        #looping through the dictionary
         for key, value in food_data.items():
             count = 0
             total = 0
+            #The second loop is to go through each array in the dictionary
             while count < len(food_data[key]):
+                #Collecting the total for each array
                 total = food_data[key][count][1] + total 
                 count += 1
+            #Using a dictionary which will hold the food type and total pounds sold off of it. 
             pound_data[key] = total
+        #Returning the data
         return pound_data
 
     #This method will get the total pounds for all of the foods
@@ -68,6 +71,32 @@ class Food_Data():
         for key, value in pound_data.items():
             total = value + total
         return total 
+
+    #This method will get the total profit for each food and add it to a dictionary
+    def get_profit(self, food_data):
+        profit_data = {}
+        for key, value in food_data.items():
+            count = 0
+            total = 0
+            while count < len(food_data[key]):
+                total = food_data[key][count][2] + total 
+                count += 1
+            profit_data[key] = total 
+        print(profit_data)
+        return profit_data
+
+    #This miethod will get the total profit for all of the foods 
+    def total_profit(self, profit_data):
+        total = 0
+        for key, value in profit_data.items():
+            total = value + total
+        return total 
+
+
+
+
+
+
 
     #This method will get the pounds of all the different foods
     # def get_poundage(self, food_data):

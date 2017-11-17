@@ -52,6 +52,12 @@
     <p>Total poundage of food sold: {{ total_pounds }}</p>
 
     <h3>Money Earned:</h3>
+    <ul>
+      {% for food, pound in profit_info.items() %}
+        <li>{{ food }}: {{ pound }} Lbs</li>
+      {% endfor %}
+    </ul>
+    <p>Total profit of food sold: ${{ total_profit }}</p>
   </aside>
 
 

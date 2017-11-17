@@ -86,15 +86,20 @@ def home():
 @app.route('/stats', methods=['GET', "POST"])
 def stats():
     #I will be using his list of the foods for reference throughout the stats page
-    foods = ['Kale', 'Collards', 'Broccoli', 'Spinach']
+    #foods = ['Kale', 'Collards', 'Broccoli', 'Spinach']
+
     #Creating a food object
     food = Food_Data()
     #Calling the pull_food method which will pull the data out of the database
     food_data = food.pull_food()
     #Here I'm getting the total pounds for EACH food 
     pound_data = food.get_pounds(food_data)
+    #Here I'm getting the total profit for EACH food
+    profit_data = food.get_profit(food_data)
     #Here I'm getting the total pounds for all the food
     total_pounds = food.total_pounds(pound_data) 
+    #Here I'm getting the total profit for all the food 
+    total_profit = food.total_profit(profit_data)
 
 
 
@@ -115,7 +120,8 @@ def stats():
     # total_lbs = 0
     # profit_dictionary = 0
     # total_dollar_amount = 0
-    return render_template('stats_page.html', pound_info = pound_data, total_pounds = total_pounds, pound_data=json.dumps(pound_data)  )
+    return render_template('stats_page.html', pound_info = pound_data, total_pounds = total_pounds, 
+        profit_info =profit_data, total_profit = total_profit, pound_data=json.dumps(pound_data)  )
     # return render_template('stats.html', pounds=pound_dictionary, total_lbs = total_lbs, 
     #     profit=profit_dictionary, total_dollar_amount = total_dollar_amount, 
     #     pound_data=json.dumps(pound_dictionary), profit_data=json.dumps(profit_dictionary) )
