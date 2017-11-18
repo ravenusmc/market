@@ -111,7 +111,7 @@
 
   poundDataArray = turnToObject(pound_data);
 
-  // Code below here builds D3.JS graph for pounds
+  // Code below here builds the D3.JS graphs for the pound data
 
   var maxPound = d3.max(poundDataArray, 
     function(d) {return parseInt(d.Pounds)}
@@ -297,6 +297,5 @@
     .call(yAxisProfit);
 
 </script>
-
 
 {% endblock %}

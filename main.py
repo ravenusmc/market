@@ -85,9 +85,6 @@ def home():
 #This route will take the user to the stats page
 @app.route('/stats', methods=['GET', "POST"])
 def stats():
-    #I will be using his list of the foods for reference throughout the stats page
-    #foods = ['Kale', 'Collards', 'Broccoli', 'Spinach']
-
     #Creating a food object
     food = Food_Data()
     #Calling the pull_food method which will pull the data out of the database
@@ -100,33 +97,9 @@ def stats():
     total_pounds = food.total_pounds(pound_data) 
     #Here I'm getting the total profit for all the food 
     total_profit = food.total_profit(profit_data)
-
-
-
-    #print(food_data)
-    #print(food_data["Broccoli"][0][1])
-    # print(len(food_data["Broccoli"]))
-    #I then use the get_poundage method to get the total pounds for all the food
-    # total_pounds = food.get_poundage(food_data)
-    # #This method gets the total pounds sold.
-    # total_lbs = food.get_total_pounds_all_foods(total_pounds)
-    # total_profit = food.get_profit(food_data)
-    # #This method get the total profit
-    # total_dollar_amount = food.get_total_profit_all_foods(total_profit)
-    # #I turn the two lists, foods and total_pounds into a dictionary
-    # pound_dictionary = dict(zip(foods, total_pounds)) #The issue appears to be here. 
-    # profit_dictionary = dict(zip(foods, total_profit))
-    # pound_dictionary = 0
-    # total_lbs = 0
-    # profit_dictionary = 0
-    # total_dollar_amount = 0
     return render_template('stats_page.html', pound_info = pound_data, total_pounds = total_pounds, 
         profit_info =profit_data, total_profit = total_profit, pound_data=json.dumps(pound_data),
         profit_data=json.dumps(profit_data))
-    # return render_template('stats.html', pounds=pound_dictionary, total_lbs = total_lbs, 
-    #     profit=profit_dictionary, total_dollar_amount = total_dollar_amount, 
-    #     pound_data=json.dumps(pound_dictionary), profit_data=json.dumps(profit_dictionary) )
-
 
 #This function is what will log out the user.
 @app.route('/sign_out')

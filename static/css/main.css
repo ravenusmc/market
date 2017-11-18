@@ -29,6 +29,11 @@ body, html {
 .login_main_div {
   padding: 15px;
   border-radius: 10px;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.login_heading {
+  color: white;
 }
 
 .btn_div {
@@ -119,7 +124,7 @@ body, html {
 }
 
 footer {
-  border: 3px solid green;
+  border-top: 2px solid black;
   grid-area: footer;
   text-align: center;
   margin-top: 25px;
