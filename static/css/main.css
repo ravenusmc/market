@@ -130,6 +130,10 @@ footer {
   margin-top: 25px;
 }
 
+.footer_div {
+  padding-top: 25px;
+}
+
 /* CSS for stats page */
 
 .stats_container {

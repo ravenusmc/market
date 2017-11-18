@@ -24,6 +24,7 @@ class Fix():
     def delete(self, content):
         #Since first gets pushed in the 0 position, I now need to delete the element that was in the 0 position
         #and is now in the 1 position
+        print(content)
         del content[1]
         del content[-1]
         #I then turn the elements in the list into a string 
