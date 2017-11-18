@@ -64,9 +64,11 @@
   <main>
     <div class='pounds'>
       <h1 class='center'>Pound Data</h1>
+      <h6>Hover over specific bar to see exact amounts</h6>
     </div>
     <div class='profit'>
       <h1 class='center'>Profit Data</h1>
+      <h6>Hover over specific bar to see exact amounts</h6>
     </div>
   </main>
 
@@ -166,24 +168,12 @@
       .attr('height', function(d){
         return h - margin.bottom - yScale(d.Pounds);
       })
-      .attr('fill', 'steelblue');
+      .attr('fill', 'steelblue')
+      .append("title")
+      .text(function(d){
+          return d.Food + ":" + " " + d.Pounds;
+      });
 
-  // svg.selectAll('text')
-  //     .data(poundDataArray)
-  //     .enter()
-  //     .append('text')
-  //     .text(function(d){
-  //       return d.Pounds;
-  //     })
-  //     .attr('fill', 'black')
-  //     //This moves the text to the left and right. Larger numbers to the right.
-  //     .attr('x',  function(d,i){
-  //       return i * 43;
-  //     })
-  //     //This moves the text up and down. 
-  //     .attr('y', function(d){
-  //       return h - (d.Pounds * 5) - 10;
-  //     });
 
   //Creating X axis
   var xAxisGroup = svg.append("g")
@@ -274,7 +264,11 @@
       .attr('height', function(d){
         return h - margin.bottom - yScaleProfit(d.Profit);
       })
-      .attr('fill', 'steelblue');
+      .attr('fill', 'steelblue')
+      .append("title")
+      .text(function(d){
+          return d.Food + ":" + " " + d.Profit;
+       });
 
 
   //Creating X axis

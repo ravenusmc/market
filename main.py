@@ -115,5 +115,3 @@ app.secret_key = 'n3A\xef(\xb0Cf^\xda\xf7\x97\xb1x\x8e\x94\xd5r\xe0\x11\x88\x1b\
 #This line will actually run the app.
 if __name__ == '__main__':
     app.run(debug=True)
-
-#Scrap code 
