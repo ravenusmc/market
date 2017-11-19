@@ -21,6 +21,7 @@ The app allows the user to enter in the amount of pounds for four different type
 3. Pandas-0.18.1
 4. Numpy-1.11.0
 5. MySQL-5.6.26
+6. D3.JS-4
 
 ### Operation
 

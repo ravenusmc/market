@@ -1,4 +1,4 @@
-#This file will contain tthe connections to the MySQL database to store the amount of food 
+#This file will contain the connections to the MySQL database to store the amount of food 
 
 #Importing files to use in this file.
 import mysql.connector
@@ -82,10 +82,9 @@ class Food_Data():
                 total = food_data[key][count][2] + total 
                 count += 1
             profit_data[key] = total 
-        print(profit_data)
         return profit_data
 
-    #This miethod will get the total profit for all of the foods 
+    #This method will get the total profit for all of the foods 
     def total_profit(self, profit_data):
         total = 0
         for key, value in profit_data.items():

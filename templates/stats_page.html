@@ -2,17 +2,7 @@
 
 
 {% block body %}
-<style>
-
-  div.bar {
-      display: inline-block;
-      width: 30px;
-      height: 75px; /* Gets overriden by D3-assigned height below */
-      margin-right: 2px;
-      background-color: red;
-  }
-</style>
-
+<!-- Calling D3.JS Version 4 -->
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
 <nav class="navbar-fixed navbar navbar-toggleable-md navbar-inverse bg-inverse">
@@ -49,12 +39,12 @@
         <li>{{ food }}: {{ pound }} Lbs</li>
       {% endfor %}
     </ul>
-    <p>Total poundage of food sold: {{ total_pounds }}</p>
+    <p>Total poundage of food sold: {{ total_pounds }} lbs</p>
 
     <h3>Money Earned:</h3>
     <ul>
-      {% for food, pound in profit_info.items() %}
-        <li>{{ food }}: {{ pound }} Lbs</li>
+      {% for food, profit in profit_info.items() %}
+        <li>{{ food }}: ${{ profit }}</li>
       {% endfor %}
     </ul>
     <p>Total profit of food sold: ${{ total_profit }}</p>

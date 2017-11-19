@@ -24,9 +24,27 @@ class Fix():
     def delete(self, content):
         #Since first gets pushed in the 0 position, I now need to delete the element that was in the 0 position
         #and is now in the 1 position
-        print(content)
-        del content[1]
-        del content[-1]
+        last_value = content[-1]
+        #Here I'm checking what the last value is 
+        if last_value != '</p>':
+            #I turn the last word, which contains the closing p tag, into a list
+            last_value_list = list(last_value)
+            #Find the location of the '<' part of the </p> tag
+            first_value = last_value_list.index('<')
+            #Finding the last part of the p tag, which is '>'
+            last_value = first_value + 4
+            #I then slice that part out of the list
+            del last_value_list[first_value:last_value]
+            #I rejoin all the letters from the list to make a string again
+            word = ''.join(last_value_list)
+            #insert the word into the last position of the content list
+            content.insert(len(content), word)
+            #Deleting the p tags
+            del content[1]
+            del content[-2]
+        else:
+            del content[1]
+            del content[-1]
         #I then turn the elements in the list into a string 
         content = ' '.join(content)
         return content

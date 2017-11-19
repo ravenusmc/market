@@ -37,8 +37,3 @@ class Quote():
             quote_list.append(content)
             count += 1 
         return quote_list
-
-
-# quote = Quote()
-# response = quote.getting_quotes()
-# quote.get_data(response)

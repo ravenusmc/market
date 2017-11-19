@@ -9,7 +9,6 @@ from food_data import *
 from quote import *
 from user import *
 
-
 #Setting up Flask
 app = Flask(__name__)
 
