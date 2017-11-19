@@ -3,6 +3,8 @@
 
 This is a web based app that will attempt to simulate a program to track people buying goods at a store. I got this idea while volunteering at the urban farm Truly Living Well. I really wanted to see if I could build a program that will track people buying goods. In many ways, what I'm getting out, is basically building a cash register. 
 
+The app allows the user to enter in the amount of pounds for four different types of vegatables. Once that information has been entered, the user will be able to head over to a 'stats' page where they can see data, profit and pounds sold, for each of the foods. I also used D3.JS to make some graphs of the data. 
+
 
 # Getting started
 ### Installing
