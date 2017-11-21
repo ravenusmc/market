@@ -28,30 +28,32 @@
     <h1 class='home_title'>Farmers Register</h1>
   </header>
 
-  <main class='home_main'>
-    <h1>Check Out Customer</h1> 
-    <h3>Welcome {{ name }}</h3>
-    <form method="POST" onsubmit="return validate();">
-      <table>
-          <tr><td class='center bold'>Food</td><td class='center bold'>Amount (lbs)</td></tr>
-          <tr><td>Kale</td><td><input id='kale' name='kale_amount' class='input_adjustment'></td></tr>
-          <tr><td>Collards</td><td><input id='collards' name='collard_amount' class='input_adjustment'></td></tr>
-          <tr><td>Broccoli</td><td><input id='broccoli' name='broccoli_amount' class='input_adjustment'></td></tr>
-          <tr><td>Spinach</td><td><input id='spinach' name='spinach_amount' class='input_adjustment'></td></tr>
-      </table><br>
-      <div class='btn_fix'>
-        <button>Submit</button>
-      </div>
-    </form>
-  </main>
+  <div class='main_section'>
+    <main class='home_main'>
+      <h1>Check Out Customer</h1> 
+      <h3>Welcome {{ name }}</h3>
+      <form method="POST" onsubmit="return validate();">
+        <table>
+            <tr><td class='center bold'>Food</td><td class='center bold'>Amount (lbs)</td></tr>
+            <tr><td>Kale</td><td><input id='kale' name='kale_amount' class='input_adjustment'></td></tr>
+            <tr><td>Collards</td><td><input id='collards' name='collard_amount' class='input_adjustment'></td></tr>
+            <tr><td>Broccoli</td><td><input id='broccoli' name='broccoli_amount' class='input_adjustment'></td></tr>
+            <tr><td>Spinach</td><td><input id='spinach' name='spinach_amount' class='input_adjustment'></td></tr>
+        </table><br>
+        <div class='btn_fix'>
+          <button>Submit</button>
+        </div>
+      </form>
+    </main>
 
-  <aside class='home_aside'>
-    <h3 class='center'>Inspirational Quotes:</h3>
-    {% for quote in quotes %}
-      <p>{{ quote }}</p>  
-      <br>     
-    {% endfor %}
-  </aside>
+    <aside class='home_aside'>
+      <h3 class='center'>Inspirational Quotes:</h3>
+      {% for quote in quotes %}
+        <p>{{ quote }}</p>  
+        <br>     
+      {% endfor %}
+    </aside>
+  </div>
 
   <footer>
     <div class='footer_div'>

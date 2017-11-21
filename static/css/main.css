@@ -67,13 +67,13 @@ body, html {
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 20px;
-  display: grid;
+/*  display: grid;
   grid-template-columns: 2fr 1fr;
   grid-gap: 10px;
   grid-template-areas:
   "home_header home_header"
   "home_main home_aside"
-  "footer footer";
+  "footer footer";*/
 
 }
 
@@ -90,6 +90,29 @@ body, html {
   background-position: center;
 }
 
+.main_section {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+}
+
+.home_main {
+  grid-area: home_main;
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  align-items: center;
+}
+
+.home_aside {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
 .home_title {
   background-color: rgba(0,0,0,0.8);
   color: white;
@@ -97,12 +120,6 @@ body, html {
   border-radius: 8px;
 }
 
-.home_main {
-  grid-area: home_main;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 .btn_fix {
   display: flex;
@@ -112,15 +129,6 @@ body, html {
 
 .input_adjustment {
   margin-left: 20px;
-}
-
-.home_aside {
-  grid-area: home_aside;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
 }
 
 footer {
@@ -198,13 +206,9 @@ footer {
 
 @media (max-width: 768px){
 
-  .main_container {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "header"
-      "main"
-      "aside"
-      "footer";
+  .main_section {
+    display: flex;
+    flex-direction: column;
   }
 
   .stats_container {
