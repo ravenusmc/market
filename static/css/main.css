@@ -211,6 +211,15 @@ footer {
     flex-direction: column;
   }
 
+  .check_out_heading {
+    text-align: center;
+  }
+
+  .home_aside {
+    margin-top: 25px;
+    border-top: 2px solid black;
+  } 
+
   .stats_container {
     grid-template-columns: 1fr;
     grid-template-areas:
