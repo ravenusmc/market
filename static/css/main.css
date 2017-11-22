@@ -133,7 +133,6 @@ body, html {
 
 footer {
   border-top: 2px solid black;
-  grid-area: footer;
   text-align: center;
   margin-top: 25px;
 }
@@ -159,7 +158,6 @@ footer {
 }
 
 .stats_header {
-  grid-area: stats_header;
   background-image: url('/static/image/stats.jpg');
   height: 400px;
   background-size: cover;
@@ -179,7 +177,6 @@ footer {
 }
 
 .stats_main {
-  grid-area: stats_main;
   border: 2px solid blue;
   display: flex;
   flex-direction: row;
@@ -197,11 +194,6 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-
-.stats_aside {
-  grid-area: stats_aside;
 }
 
 @media (max-width: 768px){
@@ -228,6 +220,23 @@ footer {
       "stats_main"
       "footer";
     ;
+  }
+
+  /* Code for the stats page */
+  .stats_header {
+    width: 300px;
+  }
+
+  .stats_page_title {
+    font-size: 20px;
+  }
+
+  .stats_title {
+    font-size: 1.8em;
+  }
+
+  .footer_stats {
+    width: 300px;
   }
 
 }
