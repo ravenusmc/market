@@ -25,29 +25,39 @@
   </div>
 </nav>
 
+<header class='stats_header'>
+  <h1 class='stats_page_title'>Welcome to the Stats Page</h1>
+</header>
+
 <div class='stats_container'>
 
-  <header class='stats_header'>
-    <h1 class='stats_page_title'>Welcome to the Stats Page</h1>
-  </header>
-
   <aside class='stats_aside'>
-    <h1 class='stats_title center'>Basic information</h1>
-    <h3>Pounds Sold:</h3>
-    <ul>
-      {% for food, pound in pound_info.items() %}
-        <li>{{ food }}: {{ pound }} Lbs</li>
-      {% endfor %}
-    </ul>
-    <p>Total poundage of food sold: {{ total_pounds }} lbs</p>
 
-    <h3>Money Earned:</h3>
-    <ul>
-      {% for food, profit in profit_info.items() %}
-        <li>{{ food }}: ${{ profit }}</li>
-      {% endfor %}
-    </ul>
-    <p>Total profit of food sold: ${{ total_profit }}</p>
+    <div>
+      <h1 class='stats_title center'>Basic information</h1>
+      <h3>Pounds Sold:</h3>
+      <ul>
+        {% for food, pound in pound_info.items() %}
+          <li>{{ food }}: {{ pound }} Lbs</li>
+        {% endfor %}
+      </ul>
+      <p>Total poundage of food sold: {{ total_pounds }} lbs</p>
+    </div>
+
+    <div>
+      <h3>Money Earned:</h3>
+      <ul>
+        {% for food, profit in profit_info.items() %}
+          <li>{{ food }}: ${{ profit }}</li>
+        {% endfor %}
+      </ul>
+      <p>Total profit of food sold: ${{ total_profit }}</p>
+    </div>  
+
+    <div>
+      <img class='dirt_image' src="../static/image/dirt.jpg">
+    </div>
+
   </aside>
 
 
@@ -62,6 +72,8 @@
     </div>
   </main>
 
+</div>
+
   <footer class='footer_stats'>
     <div class='footer_div'>
        Copyright &copy; 2017 Mike Cuddy Productions
@@ -73,8 +85,6 @@
       </p>
     </div>
   </footer>
-
-</div>
 
 <script type="text/javascript">
   //Global variables 
