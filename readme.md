@@ -31,9 +31,11 @@ website.
 
 # Issues
 
+There is a small issue with the quotes api and how the quotes are represented on the screen. Please see the below YouTube video to see what I mean. 
+
 
 # Preview
 
-To see a video that talks about this project please go here: Coming Soon
+To see a video that talks about this project please go here: https://www.youtube.com/watch?v=osNbuxRxPkw&feature=em-upload_owner
 
-Blog entry: Coming Soon 
+Blog entry: https://codingsaga.wordpress.com/2017/11/26/market-register/
